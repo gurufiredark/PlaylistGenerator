@@ -1,11 +1,11 @@
 
 class Song:
-    def __init__(self, title, spotifyManager):
+    def __init__(self, title, spotify_manager):
         self.title= title
         
-        result = spotifyManager.sp.search(self.title, type='track')
+        result = spotify_manager.sp.search(self.title, type='track')
         track_id = result['tracks']['items'][0]['id']
-        features = spotifyManager.sp.audio_features(track_id)
+        features = spotify_manager.sp.audio_features(track_id)
 
         atributos_desejados = ['danceability', 'energy', 'speechiness', 'acousticness', 'instrumentalness', 'valence']
         objeto_filtrado = {atributo: features[atributo] for atributo in atributos_desejados if atributo in features}
