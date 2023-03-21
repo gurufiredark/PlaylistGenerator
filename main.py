@@ -17,12 +17,12 @@ songs = inicializarObjetosSong(song_titles, spotify_manager)
 # danceability, energy and valence.
 
 playlists = [
-    {'nome': 'Feliz', 'danceability': 0.65, 'energy': 0.75, 'valence': 1},
-    {'nome': 'Triste', 'danceability': 0.5, 'energy': 0.25, 'valence': 0},
-    {'nome': 'Festa', 'danceability': 1, 'energy': 1, 'valence': 1}
+    {'nome': 'Feliz', 'danceability': 0.75, 'energy': 0.9, 'valence': 1},
+    {'nome': 'Triste', 'danceability': 0.25, 'energy': 0.2, 'valence': 0},
+    {'nome': 'Festa', 'danceability': 1, 'energy': 1, 'valence': 0.87525}
 ]
 
-POPULATION_SIZE = 30
+POPULATION_SIZE = 100
 MUTATION_RATE = 0.01
 GENERATIONS = 1000
 
