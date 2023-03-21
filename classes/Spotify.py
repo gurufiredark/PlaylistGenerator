@@ -11,7 +11,7 @@ class Spotify:
         # Usa a variável de ambiente MY_VAR
         # Insira suas credenciais da API do Spotify
         client_id = os.getenv('CLIENT_ID')
-        client_secret = os.getenv('CLIENT_secret')
+        client_secret = os.getenv('CLIENT_SECRET')
         
         # Configure a autenticação
         self.client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
