@@ -7,10 +7,17 @@ class Song:
         track_id = result['tracks']['items'][0]['id']
         features = spotify_manager.sp.audio_features(track_id)
 
-        atributos_desejados = ['danceability', 'energy', 'speechiness', 'acousticness', 'instrumentalness', 'valence']
-        objeto_filtrado = {atributo: features[atributo] for atributo in atributos_desejados if atributo in features}
+        atributos_desejados = ['danceability', 'energy',  'valence']
 
-        self.caracteristicas = objeto_filtrado
+        novo_obj = {}
+        obj_features=features[0]
+
+        for atributo in atributos_desejados:
+            # adiciona o atributo ao novo dicionário se ele existir no objeto original
+            if atributo in obj_features:
+                novo_obj[atributo] = obj_features[atributo]
+
+        self.caracteristicas = novo_obj
     
     def getCaracteristicas(self):
         return self.caracteristicas
@@ -23,15 +30,6 @@ class Song:
     
     def getEnergy(self):
         return self.caracteristicas['energy']   
-    
-    def getSpeechiness(self):
-        return self.caracteristicas['speechiness']
-    
-    def getAcousticness(self):
-        return self.caracteristicas['acousticness']
-    
-    def getInstrumentalness(self):
-        return self.caracteristicas['instrumentalness']
     
     def getValence(self):
         return self.caracteristicas['valence']

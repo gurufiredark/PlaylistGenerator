@@ -6,7 +6,6 @@ def inicializarObjetosSong(song_titles, spotify_manager):
     for title in song_titles:
         song = Song(title=title, spotify_manager=spotify_manager)
         songs.append(song)
-        print(songs)
 
     return songs
 
@@ -19,3 +18,12 @@ def getSongTitlesFromFile(filename):
             song_titles.append(linha.strip())
 
     return song_titles
+
+def printarMusicas(songs):
+    for song in songs:
+        print("x----------------------x")
+        print(f'Title = {song.getTitle()} ')
+        print(f'Danceability = {song.getDanceability()}')
+        print(f'Energy = {song.getEnergy()}')
+        print(f'Valence = {song.getValence()}')
+        print("x----------------------x\n\n\n")
