@@ -27,3 +27,13 @@ def printarMusicas(songs):
         print(f'Energy = {song.getEnergy()}')
         print(f'Valence = {song.getValence()}')
         print("x----------------------x\n\n\n")
+
+def printarMusicasPopulation(songs):
+    print("{ ", end="")
+    for song in songs:
+        print(f' {song.getTitle()} ', end="")
+        print(f' {song.getDanceability()} ', end="")
+        print(f' {song.getEnergy()} ', end="")
+        print(f' {song.getValence()} ', end="")
+        print("||", end="")
+    print(" }")
