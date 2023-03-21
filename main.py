@@ -22,9 +22,9 @@ playlists = [
     {'nome': 'Festa', 'danceability': 1, 'energy': 1, 'valence': 0.87525}
 ]
 
-POPULATION_SIZE = 100
+POPULATION_SIZE = 100 #Testar com tamanho menor
 MUTATION_RATE = 0.01
-GENERATIONS = 1000
+GENERATIONS = 1000 #Testar com menos geracoes
 
 
 for playlist in playlists:
