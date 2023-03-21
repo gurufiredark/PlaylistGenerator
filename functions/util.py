@@ -1,5 +1,6 @@
 from classes.Song import Song
 
+
 def inicializarObjetosSong(song_titles, spotify_manager):
     songs = []
 
@@ -11,13 +12,14 @@ def inicializarObjetosSong(song_titles, spotify_manager):
 
 
 def getSongTitlesFromFile(filename):
-    song_titles=[]
+    song_titles = []
 
     with open(filename, "r") as arquivo:
         for linha in arquivo:
             song_titles.append(linha.strip())
 
     return song_titles
+
 
 def printarMusicas(songs):
     for song in songs:
@@ -28,12 +30,24 @@ def printarMusicas(songs):
         print(f'Valence = {song.getValence()}')
         print("x----------------------x\n\n\n")
 
+
 def printarMusicasPopulation(songs):
     print("{ ", end="")
     for song in songs:
         print(f' {song.getTitle()} ', end="")
-        print(f' {song.getDanceability()} ', end="")
-        print(f' {song.getEnergy()} ', end="")
-        print(f' {song.getValence()} ', end="")
+        # print(f' {song.getDanceability()} ', end="")
+        # print(f' {song.getEnergy()} ', end="")
+        # print(f' {song.getValence()} ', end="")
         print("||", end="")
     print(" }")
+
+
+def removerMusicasRepetidas(playlist):
+    i = 0
+    j = 0
+    for i in range(len(playlist) - 1):
+        j = i + 1
+        while j < len(playlist):
+            if playlist[i].getTitle() == playlist[j].getTitle():
+                playlist.pop(j)
+            j += 1
