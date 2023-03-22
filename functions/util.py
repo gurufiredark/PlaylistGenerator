@@ -44,10 +44,11 @@ def printarMusicasPopulation(songs):
 
 def removerMusicasRepetidas(playlist):
     i = 0
-    j = 0
+    j=0
     for i in range(len(playlist) - 1):
         j = i + 1
         while j < len(playlist):
             if playlist[i].getTitle() == playlist[j].getTitle():
                 playlist.pop(j)
-            j += 1
+            else:
+                j += 1

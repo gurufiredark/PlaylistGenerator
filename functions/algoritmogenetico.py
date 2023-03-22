@@ -31,11 +31,11 @@ def create_individual(songs):
 
 def crossover(individual1, individual2):
     # Escolhe um ponto de corte aleatório para a troca de material genético
-    cutoff = random.randint(0, len(individual1) - 1)
+    divisao_de_corte= random.randint(0, len(individual1) - 1)
     
     # Realiza a troca de material genético entre os indivíduos
-    new_individual1 = individual1[:cutoff] + individual2[cutoff:]
-    new_individual2 = individual2[:cutoff] + individual1[cutoff:]
+    new_individual1 = individual1[:divisao_de_corte] + individual2[divisao_de_corte:]
+    new_individual2 = individual2[:divisao_de_corte] + individual1[divisao_de_corte:]
     
     return new_individual1, new_individual2
 
@@ -46,10 +46,18 @@ def mutate(individual, mutation_rate):
         if random.random() < mutation_rate:
             # Escolhe aleatoriamente um atributo para mutar (danceability, energy ou valence)
             atributo = random.choice(['danceability', 'energy', 'valence'])
-            # Adiciona um valor aleatório pequeno (-0.1 a 0.1) ao atributo mutado
-            valor_aux=individual[i].getAtributo(atributo)+random.uniform(-0.1, 0.1)
+            # Adiciona um valor aleatório pequeno (-0.05 a 0.05) ao atributo mutado
+            valor_aux=individual[i].getAtributo(atributo)+random.uniform(-0.05, 0.05)
             individual[i].setAtributo(atributo, valor_aux)
             # Garante que o atributo mutado permaneça no intervalo [0, 1]
             individual[i].setAtributo(atributo, max(0, min(1, individual[i].getAtributo(atributo))))
     
     return individual
+
+def select_parents_roulette(population, playlist):
+    fitnesses = [fitness_function(individual, [playlist]) for individual in population]
+    total_fitness = sum(fitnesses)
+    probabilities = [fitness/total_fitness for fitness in fitnesses]
+    parent1 = random.choices(population, weights=probabilities)[0]
+    parent2 = random.choices(population, weights=probabilities)[0]
+    return parent1, parent2
